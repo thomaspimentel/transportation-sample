@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+    db:
+        image: mongo
+        ports:
+            - "27017:27017"
+    backend:
+        build: ./backend
+        volumes:
+            - ./backend:/usr/src/backend
+            - /usr/src/backend/node_modules
+        ports:
+            - "3000:3000"
+        depends_on: 
+            - db
+        command: bash -c "rails s -b 0.0.0.0 -P /dev/null"
