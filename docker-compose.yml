@@ -14,4 +14,4 @@ services:
             - "3000:3000"
         depends_on: 
             - db
-        command: bash -c "rails s -b 0.0.0.0 -P /dev/null"
+        command: bash -c "rm yarn.lock && yarn install && rails s -b 0.0.0.0 -P /dev/null"

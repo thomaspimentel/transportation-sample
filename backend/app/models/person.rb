@@ -14,4 +14,8 @@ class Person
   validates_presence_of :last_name
   validates :email, presence: true,
                     uniqueness: {case_sensitive: false}
+
+  def full_name
+    [first_name, last_name].join(' ')
+  end
 end

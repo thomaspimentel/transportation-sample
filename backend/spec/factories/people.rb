@@ -7,4 +7,20 @@ FactoryBot.define do
         date_of_birth   {"1940-05-06"}
         phone_number    {"647-300-1486"}
     end
+
+    factory :rider, class: "Rider" do
+        first_name      {"Anon"}
+        last_name       {"Rider"}
+        email           {"anon_rider@tennistournament.com"}
+        date_of_birth   {"2000-05-04"}
+        phone_number    {"123-456-7890"}
+    end
+
+    factory :driver, class: "Driver" do
+        first_name      {"Anon"}
+        last_name       {"Driver"}
+        email           {"anon_driver@tennistournament.com"}
+        date_of_birth   {"1960-08-03"}
+        phone_number    {"098-765-4321"}
+    end
 end 

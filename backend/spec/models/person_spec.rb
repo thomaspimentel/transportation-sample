@@ -21,4 +21,8 @@ RSpec.describe Person, type: :model do
     person = build :person
     expect(person).to_not be_valid
   end
+
+  it 'has a full name method' do
+    expect(build(:person)).to respond_to(:full_name)
+  end
 end
