@@ -22,5 +22,22 @@ FactoryBot.define do
         email           {"anon_driver@tennistournament.com"}
         date_of_birth   {"1960-08-03"}
         phone_number    {"098-765-4321"}
+        event
+    end
+
+    factory :dispatcher, class: "Dispatcher" do
+        first_name      {"Anon"}
+        last_name       {"Dispatcher"}
+        email           {"anon_disptcher@tennistournament.com"}
+        date_of_birth   {"1965-09-23"}
+        phone_number    {"098-765-1234"}
+
+        trait :superadmin do
+            dispatcher_role { "superadmin" }
+        end
+
+        trait :dispatcher do
+            dispatcher_role { "dispatcher" }
+        end
     end
 end 
