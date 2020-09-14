@@ -14,6 +14,10 @@ class Event
   field :address_two, type: String
   field :active, type: Boolean, default: true
 
+  has_many :drivers
+  has_many :dispatchers
+  has_many :vehicles
+
   validates :name,  presence: true,
                     uniqueness: true
   validates :start_date,  presence: true
