@@ -11,7 +11,8 @@ class Vehicle
   belongs_to :event
 
   validates :username,  presence:true,
-                        uniqueness: { case_sensitive: false }
+                        uniqueness: { case_sensitive: false },
+                        format: { without: /\s/ }
   validates :year,     allow_nil: true,
                         inclusion: { in: 1900..Date.today.year },
                         format: { 

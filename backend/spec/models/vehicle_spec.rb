@@ -1,5 +1,4 @@
 require 'rails_helper'
-# WORK HERE NEXT
 
 RSpec.describe Vehicle, type: :model do
   it 'is valid' do
@@ -10,6 +9,11 @@ RSpec.describe Vehicle, type: :model do
 
   it 'is invalid without username present' do
     vehicle = build :vehicle, username: nil
+    expect(vehicle).to_not be_valid
+  end
+
+  it 'is invalid if username has whitespace' do
+    vehicle = build :vehicle, username: "should not work"
     expect(vehicle).to_not be_valid
   end
 

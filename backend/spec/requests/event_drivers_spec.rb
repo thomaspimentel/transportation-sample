@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "/events/:event_id/drivers", type: :request do
     before(:each) do
-        @headers = { "ACCEPT" => "application/json" }
+        @headers = { "ACCEPT": "application/json" }
         @event = create :event
     end
 
@@ -35,5 +35,19 @@ RSpec.describe "/events/:event_id/drivers", type: :request do
                 expect(JSON.parse(response.body)["email"]).to eq(valid_attributes["email"])
             end
         end
+
+        context "with invalid attributes" do
+            it "does not create a new driver" do
+                expect {
+                    post event_drivers_url(@event), params: { driver: invalid_attributes }, headers: @headers
+                }.to change(Vehicle, :count).by(0)
+            end
+
+            it "renders an errors response" do
+                post event_drivers_url(@event), params: { driver: invalid_attributes }, headers: @headers
+                expect(response).to have_http_status(:unprocessable_entity)
+            end
+        end
     end
+
 end

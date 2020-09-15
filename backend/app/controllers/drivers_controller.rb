@@ -7,8 +7,29 @@ class DriversController < ApplicationController
     end
 
     def create
-        driver = @event.drivers.create(driver_params)
-        render json: driver
+        driver = @event.drivers.build(driver_params)
+        if driver.save
+            render json: driver
+        else
+            render json: driver.errors, status: :unprocessable_entity
+        end
+    end
+
+    def show
+        render json: @driver
+    end
+
+    def update
+        if @driver.update(driver_params)
+            render json: @driver
+        else
+            render json: @driver.errors, status: :unprocessable_entity
+        end
+    end
+
+    def destroy
+        @driver.destroy
+        head :no_content
     end
 
     private

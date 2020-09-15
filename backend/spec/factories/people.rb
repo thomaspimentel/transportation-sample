@@ -22,7 +22,7 @@ FactoryBot.define do
         email           {"anon_driver@tennistournament.com"}
         date_of_birth   {"1960-08-03"}
         phone_number    {"098-765-4321"}
-        event
+        association     :event
     end
 
     factory :dispatcher, class: "Dispatcher" do
