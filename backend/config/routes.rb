@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   end
 
   resources :drivers, only: [:show, :update, :destroy]
+  resources :vehicle_makes, except: [:new, :edit]
   resources :vehicles, only: [:show, :update, :destroy]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
